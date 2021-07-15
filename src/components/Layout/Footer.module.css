@@ -1,0 +1,10 @@
+.footer_top {
+  border-top: 0.3125rem solid #111;
+  background-color: #23282f;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  color: aliceblue;
+  text-align: center;
+
+  bottom: 0;
+}

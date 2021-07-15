@@ -1,0 +1,112 @@
+.Header {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+
+  max-height: 5%;
+  background-color: #152d42;
+  overflow: hidden;
+  padding: 2% 10%;
+  align-items: center;
+}
+
+.Header_sub {
+  display: flex;
+  width: 100%;
+}
+
+.logo {
+  align-items: center;
+  margin: 0;
+  width: 60%;
+}
+
+.logo img {
+  width: 100%;
+}
+.maxWidth {
+  width: 50%;
+}
+
+.button {
+  border: none;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 30px;
+  margin: 4px 2px;
+
+  text-decoration: none;
+}
+
+.button:hover {
+  color: #2daca1;
+  font-weight: 700;
+}
+.navItem {
+  display: flex;
+  max-width: 100%;
+}
+
+.navItem li {
+  list-style: none;
+  display: inline-flex;
+}
+.navCapture {
+  color: whitesmoke;
+}
+@media screen and (max-width: 600px) {
+  .Header {
+    height: 40%;
+  }
+  .navItem {
+    visibility: hidden;
+  }
+
+  .navItemName {
+    color: aliceblue;
+    margin: 10%;
+  }
+  .logo {
+    width: 100%;
+  }
+}
+/*
+#testFooter {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 981px;
+    margin: 0 auto 8px;
+    text-shadow: 0 1px 0px #fff;
+}
+
+.testLogo {
+    width: 318px;
+    height: 41px;
+    float: left;
+    background: url('http://i.imgur.com/JvcIa.png') no-repeat left top;
+    text-indent: -8888px;
+    position: relative;
+    top: 34px;
+    left: 30px;
+}
+
+ul.testNavigation {
+    overflow: auto;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul.testNavigation li {
+    margin: 0px 15px;
+    display: inline;
+}
+
+#testHeader ul.testNavigation {
+    float: right;
+    line-height: 115px;
+    margin-right: 24px;
+}
+
+#testFooter ul.testNavigation {
+    text-align: center;
+    font-weight: bold;            
+}​*/
