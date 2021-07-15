@@ -1,0 +1,9 @@
+id,data,doc_name,doc_type,end_date,key_role,link,progress,project_summary,project_title,start_date,url_download,image,progress_rate
+4,NULL,mealApp.png,image/png,NULL,"Frontend and Backend Developer",none,NULL,"This application helps you customize your meal orders, providing you with different ingredients to make your meal. It is more like cooking your meal with your phone.","The Meal App",NULL,http://localhost:8080/downloadFile/mealApp.png,NULL,0
+5,NULL,cybertrain1.JPG,image/jpeg,NULL,"Frontend and Backend Developer",https://ninjaprofessor.com/cybertrain/,NULL,"Created a REST API using Python, Django Framework with SQL database.
+Designed and developed the User Interface using Bootstrap, Html, CSS and jQuery","Cybertrain website",NULL,http://localhost:8080/downloadFile/cybertrain1.JPG,NULL,0
+6,NULL,aipalcare.JPG,image/jpeg,NULL,"Frontend and Backend Developer",none,NULL,"Created functional component for patient registration User Interface (UI) using React Hooks and Material UI.
+Performed the implementation of the patient profile page in Java with Microsoft Azure storage for data storage.","AIpalCare Application",NULL,http://localhost:8080/downloadFile/aipalcare.JPG,NULL,3
+7,NULL,snippingCapture2.JPG,image/jpeg,NULL,"Frontend and Backend Developer",none,NULL,"Developed the application using Spring-boot microservices
+Designed the UI using a class-based component in React with React-redux.
+Utilized AWS resources such as DynamoDB and S3 for data Storage using Elastic Beanstalk for endpoint creation","Vehicle Leasing App",NULL,http://localhost:8080/downloadFile/snippingCapture2.JPG,NULL,2
