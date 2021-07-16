@@ -11,14 +11,11 @@ class UpdateWork extends Component {
     constructor(){
         super()
         this.state={
-          workId:"",
+          id: "",
           jobTitle: "",
           companyName: "",
           jobDescription: "",
-          workImage:"",
-          city: "",
-          state: "",
-          country: "",
+          image:"",
           startDate: "",
           endDate: "",
           file: null,
@@ -35,16 +32,13 @@ class UpdateWork extends Component {
             this.setState({errors:nextProps.errors})
         }
         const{
-          workId,
+          id,
           jobTitle,
           companyName,
           jobDescription,
-          workImage,
-          city,
-          state,
-          country,
-          startDate,
-          endDate,
+          image,
+         // startDate,
+          //endDate,
           file,
           fileName,
           image_preview,
@@ -52,16 +46,13 @@ class UpdateWork extends Component {
         } = nextProps.work;
 
         this.setState({
-          workId,
+          id,
           jobTitle,
           companyName,
           jobDescription,
-          workImage,
-          city,
-          state,
-          country,
-          startDate,
-          endDate,
+          image,
+          //startDate,
+         // endDate,
           file,
           fileName,
           image_preview,
@@ -91,16 +82,15 @@ class UpdateWork extends Component {
     onSubmit(e){
         e.preventDefault()
         let formData = new FormData();
-        formData.append('workId', this.state.workId);
+        formData.append('id', this.state.id);
         formData.append('file', this.state.file);
         formData.append('companyName', this.state.companyName);
         formData.append('jobTitle', this.state.jobTitle);
         formData.append('jobDescription', this.state.jobDescription);
-        formData.append('city', this.state.city);
-        formData.append('state', this.state.state);
-        formData.append('country', this.state.country);
         formData.append('fileName', this.state.fileName);
-        formData.append('workImage', this.state.workImage);
+        formData.append('image', this.state.image);
+       // formData.append('startDate', this.state.startDate);
+        //formData.append('endDate', this.state.endDate);
         this.props.updatePrevWork(formData, this.props.history)
     }
 
@@ -118,7 +108,7 @@ class UpdateWork extends Component {
 
                     <div className={classes.row}>
                   <div>
-                <img src={this.state.workImage} alt="..." className={classes.form_img_preview}/>
+                <img src={this.state.image} alt="..." className={classes.form_img_preview}/>
                     <img src={this.state.image_preview} alt="..."className={classes.form_img_preview} />
                     </div>
                       <input 
@@ -167,40 +157,7 @@ class UpdateWork extends Component {
 
                       </div>
                      
-                      <h4>Address</h4>
-                      <div className={classes.row}>
-                        <input
-                          type="text"
-                          className={classes.input}
-                          placeholder="City"
-                          name="city"
-                          value = {this.state.city}
-                          onChange={this.onChange}
-                      
-                        />
-                      </div>
-                      <div className={classes.row}>
-                        <input
-                          type="text"
-                          className={classes.input}
-                          placeholder="State"
-                          name="state"
-                          value = {this.state.state}
-                          onChange={this.onChange}
-                      
-                        />
-                      </div>
-                      <div className={classes.row}>
-                        <input
-                          type="text"
-                          className={classes.input}
-                          placeholder="Country"
-                          name="country"
-                          value = {this.state.country}
-                          onChange={this.onChange}
-                      
-                        />
-                      </div>
+          
                       <h4>Start Date</h4>
                       <div className={classes.row}>
                         <input

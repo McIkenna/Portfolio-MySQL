@@ -6,7 +6,7 @@ import jwt_decode from "jwt-decode";
 
 export const login = LoginRequest => async dispatch => {
     try{
-        const res = await axios.post("http://Portfolio-complete-cloud-env.eba-y7qj96hg.us-east-2.elasticbeanstalk.com/login", LoginRequest);
+        const res = await axios.post("http://localhost:8080/login", LoginRequest);
 
         const{jwt} = res.data;
 

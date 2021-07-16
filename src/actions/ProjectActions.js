@@ -3,7 +3,7 @@ import { DELETE_PROJECT, GET_ERRORS, GET_PROJECT, GET_PROJECTS, UPLOAD_TASK, GET
 
 export const createProject = (project, history) => async dispatch => {
     try {
-       await axios.post(`http://localhost:8080/api/project/uploadFile`, project)
+       await axios.post(`http://localhost:8080/admin/project/uploadFile`, project)
         history.push("/");
         dispatch({
             type: GET_ERRORS,
@@ -28,7 +28,7 @@ export const getProjects = () => async dispatch => {
 
 export const deleteProject = id => async dispatch => {
     if(window.confirm("This will delete Permanent")){
-        await axios.delete(`http://localhost:8080/api/project/${id}`)
+        await axios.delete(`http://localhost:8080/admin/project/${id}`)
         dispatch({
             type: DELETE_PROJECT,
             payload: id
@@ -76,7 +76,7 @@ export const getStoredTasks = () => async dispatch =>{
 
 export const updateProject = (project, history) => async dispatch => {
     try {
-       await axios.post(`http://localhost:8080/api/project/uploadFile`, project)
+       await axios.post(`http://localhost:8080/admin/project/uploadFile`, project)
         history.push("/");
         dispatch({
             type: GET_ERRORS,

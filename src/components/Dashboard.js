@@ -12,7 +12,6 @@ import {getWorks} from "../actions/WorkActions"
 import ProjectItem from './Project/ProjectItem'
 import {getProjects} from "../actions/ProjectActions"
 import {getSkills} from "../actions/SkillAction"
-import {getStoredTasks} from "../actions/ProjectActions"
 import SkillItem from './Skill/SkillItem';
 import Spinner from "./Spinner/Spinner"
 
@@ -106,6 +105,7 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
   info: PropTypes.object.isRequired,
   education: PropTypes.object.isRequired,
+  skill: PropTypes.object.isRequired,
   getInfo: PropTypes.func.isRequired,
   getAllEducation: PropTypes.func.isRequired,
   getWorks: PropTypes.func.isRequired,

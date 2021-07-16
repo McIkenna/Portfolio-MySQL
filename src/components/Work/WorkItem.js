@@ -7,7 +7,9 @@ import {deleteWork} from "../../actions/WorkActions"
 class WorkItem extends Component {
 
     onDeleteClick = id => {
+      console.log(id);
         this.props.deleteWork(id);
+        
     }
     render() {
         const {work} = this.props;
@@ -17,10 +19,10 @@ class WorkItem extends Component {
         const userIsAuthenticated = (
                
           <div className={classes.infobutton}>
-          <Link to={`/updateWork/${work.workId}`}>
+          <Link to={`/updateWork/${work.id}`}>
           <button className={classes.updatebtn}>Update</button>
           </Link>
-          <button className={classes.deletebtn} onClick={this.onDeleteClick.bind(this, work.workId)}>Delete</button>
+          <button className={classes.deletebtn} onClick={this.onDeleteClick.bind(this, work.id)}>Delete</button>
              </div>
 
         )

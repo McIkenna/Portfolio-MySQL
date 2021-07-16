@@ -9,7 +9,7 @@ import {updateSkill, getStoredSkill} from "../../actions/SkillAction"
          super()
          this.state = {
            skillId:"",
-             skillName: "",
+            skillName: "",
              subName: "",
              proficiency: "",
              rating: "",
@@ -73,8 +73,6 @@ import {updateSkill, getStoredSkill} from "../../actions/SkillAction"
 
      onSubmit(e){
          e.preventDefault();
-        
-
          let formData = new FormData();
          formData.append('skillId', this.state.skillId);
          formData.append('file', this.state.file);
@@ -88,6 +86,7 @@ import {updateSkill, getStoredSkill} from "../../actions/SkillAction"
 
          this.props.updateSkill(formData, this.props.history)
      }
+     
     render() {
         const {errors} = this.state
         return (

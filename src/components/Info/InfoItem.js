@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import {deleteInfo} from "../../actions/InfoActions"
 import {Spring} from "react-spring/renderprops"
-import resume from "../images/Ikenna Resume2.1.pdf"
+import resume from "../images/Ikenna Ifekaonwu - Tailored.pdf"
 import github from "../images/github.png"
 import linkedin from "../images/linkedin.png";
 
@@ -24,10 +24,10 @@ import linkedin from "../images/linkedin.png";
         const userIsAuthenticated = (
                
             <div className={classes.infobutton}>
-            <Link to={`/updateInfo/${info.infoId}`}>
+            <Link to={`/updateInfo/${info.id}`}>
             <button className={classes.updatebtn}>Update</button>
             </Link>
-            <button className={classes.deletebtn} onClick={this.onDeleteClick.bind(this, info.infoId)}>Delete</button>
+            <button className={classes.deletebtn} onClick={this.onDeleteClick.bind(this, info.id)}>Delete</button>
             </div>
 
         )

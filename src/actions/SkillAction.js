@@ -4,7 +4,7 @@ import { DELETE_SKILL, GET_ERRORS, GET_SKILL, GET_SKILLS } from "./types";
 export const createSkill = (skill, history) => async dispatch => {
     try {
         await axios.post(`http://localhost:8080/admin/skill`, skill )
-        history.push("/");
+        history.push("/dashboard");
         dispatch({
             type: GET_ERRORS,
             payload: {}
@@ -19,16 +19,17 @@ export const createSkill = (skill, history) => async dispatch => {
 }
 
 export const getSkills = () => async dispatch => {
-    const res = await axios.get(`http://Portfolio-complete-cloud-env.eba-y7qj96hg.us-east-2.elasticbeanstalk.com/api/skill/all`)
+    const res = await axios.get(`http://localhost:8080/api/skill/all`)
     dispatch({
         type: GET_SKILLS,
         payload: res.data
     })
+    console.log(res.data)
 }
 
-export const getStoredSkill = (skillId, history) => async dispatch => {
+export const getStoredSkill = (id, history) => async dispatch => {
     try {
-     const res = await axios.get(`http://Portfolio-complete-cloud-env.eba-y7qj96hg.us-east-2.elasticbeanstalk.com/api/skill/${skillId}`)
+     const res = await axios.get(`http://localhost:8080/api/skill/${id}`)
      dispatch({
          type: GET_SKILL,
          payload: res.data,
@@ -41,7 +42,7 @@ export const getStoredSkill = (skillId, history) => async dispatch => {
  export const deleteSkill = id => async dispatch => {
     if(window.confirm("This will delete data Permanent"))
     {
-        await axios.delete(`http://Portfolio-complete-cloud-env.eba-y7qj96hg.us-east-2.elasticbeanstalk.com/admin/skill/${id}`)
+        await axios.delete(`http://localhost:8080/admin/skill/${id}`)
     dispatch({
         type: DELETE_SKILL,
         payload: id
@@ -52,7 +53,7 @@ export const getStoredSkill = (skillId, history) => async dispatch => {
 
 export const updateSkill = (skill, history) => async dispatch => {
     try {
-        await axios.post(`http://Portfolio-complete-cloud-env.eba-y7qj96hg.us-east-2.elasticbeanstalk.com/admin/skill`, skill)
+        await axios.post(`http://localhost:8080/admin/skill`, skill)
         history.push("/")
         dispatch({
             type: GET_ERRORS,

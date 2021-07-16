@@ -16,8 +16,8 @@ class ProjectItem extends Component {
 		
 		const userIsAuthenticated = (
                <div>
-            <Link to={`/updateProject/${project.projectId}`}><button className={classes.button}>Update</button></Link>
-			<button className={classes.button} onClick={this.onDeleteClick.bind(this, project.projectId)}>Delete</button>
+            <Link to={`/updateProject/${project.id}`}><button className={classes.button}>Update</button></Link>
+			<button className={classes.button} onClick={this.onDeleteClick.bind(this, project.id)}>Delete</button>
 			</div>
 
         )

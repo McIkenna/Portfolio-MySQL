@@ -13,14 +13,15 @@ class SkillItem extends Component {
     render() {
         const {skill} = this.props;
         const {validToken, user} = this.props.security;
-
+        const image = `data:image/png;base64,${skill.image}`
+        
         const userIsAuthenticated = (
                
           <div>
-          <Link to={`/updateSkill/${skill.skillId}`}>
+          <Link to={`/updateSkill/${skill.id}`}>
             <button className={styles.updatebtn}>Update</button>
             </Link>
-            <button className={styles.deletebtn} onClick={this.onDeleteClick.bind(this, skill.skillId)}>Delete</button>
+            <button className={styles.deletebtn} onClick={this.onDeleteClick.bind(this, skill.id)}>Delete</button>
             </div>
 
       )
@@ -33,13 +34,9 @@ class SkillItem extends Component {
         }
 
         return (     
-<div className={styles.main}>
-  
-
-  <img className={styles.image} src={skill.skillImageUrl} alt=""/>
-  
+  <div className={styles.main}>
+  <img className={styles.image} src={image} alt=""/>
 {securedLinks}
-
 </div>
         )
     }

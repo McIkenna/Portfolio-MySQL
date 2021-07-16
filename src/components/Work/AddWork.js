@@ -10,14 +10,11 @@ class AddWork extends Component {
     constructor(){
         super()
         this.state = {
-        workId:"",
+        id:null,
         jobTitle: "",
         companyName: "",
         jobDescription: "",
-        workImage:"",
-        city: "",
-        state: "",
-        country: "",
+        image:"",
         startDate: "",
         endDate: "",
         file: null,
@@ -66,11 +63,8 @@ class AddWork extends Component {
             formData.append('companyName', this.state.companyName);
             formData.append('jobTitle', this.state.jobTitle);
             formData.append('jobDescription', this.state.jobDescription);
-            formData.append('city', this.state.city);
-            formData.append('state', this.state.state);
-            formData.append('country', this.state.country);
             formData.append('fileName', this.state.fileName);
-            formData.append('workImage', this.state.workImage);
+            formData.append('image', this.state.image);
         this.props.createWork(formData, this.props.history)
     }
 
@@ -131,41 +125,6 @@ class AddWork extends Component {
                         />
                         <p className={classes.invalid}>{errors.jobDescription}</p>
 
-                      </div>
-                     
-                      <h4>Address</h4>
-                      <div className={classes.row}>
-                        <input
-                          type="text"
-                          className={classes.input}
-                          placeholder="City"
-                          name="city"
-                          value = {this.state.city}
-                          onChange={this.onChange}
-                      
-                        />
-                      </div>
-                      <div className={classes.row}>
-                        <input
-                          type="text"
-                          className={classes.input}
-                          placeholder="State"
-                          name="state"
-                          value = {this.state.state}
-                          onChange={this.onChange}
-                      
-                        />
-                      </div>
-                      <div className={classes.row}>
-                        <input
-                          type="text"
-                          className={classes.input}
-                          placeholder="Country"
-                          name="country"
-                          value = {this.state.country}
-                          onChange={this.onChange}
-                      
-                        />
                       </div>
                       <h4>Start Date</h4>
                       <div className={classes.row}>

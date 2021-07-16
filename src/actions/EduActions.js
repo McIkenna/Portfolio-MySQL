@@ -3,7 +3,7 @@ import { DELETE_EDU, GET_EDUCATION, GET_EDUS, GET_ERRORS } from "./types"
 
 export const createEducation = (education, history) => async dispatch => {
     try {
-        await axios.post(`http://localhost:8080/api/education`, education)
+        await axios.post(`http://localhost:8080/admin/education`, education)
         history.push("/")
         dispatch({
             type: GET_ERRORS,
@@ -56,7 +56,7 @@ export const getStoredEdu = (id, history) => async dispatch => {
 
 export const updateEducation = (education, history) => async dispatch => {
     try {
-        await axios.post(`http://portfolio-complete-cloud-env.eba-y7qj96hg.us-east-2.elasticbeanstalk.com/admin/education`, education)
+        await axios.post(`http://localhost:8080/admin/education`, education)
         history.push("/")
         dispatch({
             type: GET_ERRORS,

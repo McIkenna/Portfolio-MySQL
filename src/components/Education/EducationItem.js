@@ -54,9 +54,9 @@ class EducationItem extends Component {
               {education.honor}
             </p>
           </div>
-        
-        </div>
           {securedLinks}
+        </div>
+      
 			  
         </div>
     </div>
