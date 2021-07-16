@@ -1,18 +1,21 @@
 package com.ikenna.portfolios.web;
 
+import com.ikenna.portfolios.infos.Response;
 import com.ikenna.portfolios.infos.Skills;
 import com.ikenna.portfolios.services.MapErrorService;
 import com.ikenna.portfolios.services.SkillsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/skills")
+@SpringBootApplication
+@RequestMapping("")
+@CrossOrigin
 public class SkillController {
 
     @Autowired
@@ -21,32 +24,46 @@ public class SkillController {
     @Autowired
     MapErrorService mapErrorService;
 
-    @PostMapping("")
-    public ResponseEntity<?> createNewInfo(@Valid @RequestBody Skills skills, BindingResult result){
+    @PostMapping("/admin/skill")
+    public Response createNewInfo(@RequestParam MultipartFile file, Skills skills){
 
-        ResponseEntity<?> errorMap = mapErrorService.MapErrorService(result);
-        if(errorMap != null) return errorMap;
 
-        Skills skill1 = skillsService.saveOrUpdateSkills(skills);
-        return new ResponseEntity<Skills>(skills, HttpStatus.CREATED);
+        Skills skill1 = skillsService.saveOrUpdateSkills(file, skills);
+        Response response = new Response();
+        if(skill1 != null) {
+            String downloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/downloadFile/")
+                    .path(skill1.getDocName())
+                    .toUriString();
+
+            response.setFileDownloadUri(downloadUri);
+            response.setFileName(skill1.getSkillName());
+            response.setFileType(skill1.getDocType());
+            response.setSize(file.getSize());
+            response.setMessage("File Uploaded Successfully!");
+            return response;
+        }
+        response.setMessage("Sorry there was an error somewhere");
+        return response;
+
     }
 
-    @GetMapping("/{skillname}")
-    public ResponseEntity<?> getInfoPhoneNo(@PathVariable String skillname){
+    @GetMapping("/api/skill/{id}")
+    public ResponseEntity<?> getInfoPhoneNo(@PathVariable long id){
 
-        Skills skills = skillsService.findBySkillName(skillname);
+        Skills skills = skillsService.findById(id);
         return new ResponseEntity<Skills>(skills, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/api/skill/all")
     public Iterable<Skills> findAllSkills(){
         return skillsService.findAllSkills();
     }
 
-    @DeleteMapping("/{skillname}")
-    public ResponseEntity<?> deleteSkill(@PathVariable String skillname){
-        skillsService.deleteBySkillName(skillname);
+    @DeleteMapping("/admin/skill/{id}")
+    public ResponseEntity<?> deleteSkill(@PathVariable long id){
+        skillsService.deleteById(id);
 
-        return new ResponseEntity<String>("User with ID: '" + skillname + "' was deleted", HttpStatus.OK);
+        return new ResponseEntity<String>("User with ID: '" + id + "' was deleted", HttpStatus.OK);
     }
 }

@@ -5,6 +5,7 @@ import com.ikenna.portfolios.infos.Response;
 import com.ikenna.portfolios.services.EducationService;
 import com.ikenna.portfolios.services.MapErrorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/education")
+@SpringBootApplication
+@RequestMapping("")
 @CrossOrigin
 public class EducationController {
 
@@ -22,7 +24,7 @@ public class EducationController {
     @Autowired
     MapErrorService mapErrorService;
 
-    @PostMapping("")
+    @PostMapping("/admin/education")
     public Response addWorkEducation(@RequestParam MultipartFile file,
                                      Education education){
 
@@ -46,18 +48,18 @@ public class EducationController {
         return response;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/education/{id}")
     public ResponseEntity<?> getEducationBySchoolName(@PathVariable long id){
         Education education = educationService.findById(id);
         return new ResponseEntity<Education>(education, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/api/education/all")
     public Iterable<Education> getAllEducation(){
         return educationService.findAllEducation();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/education/{id}")
     public ResponseEntity<?> deleteEducation(@PathVariable long id){
         educationService.deleteEdu(id);
         return new ResponseEntity<String>("Education with School ID '" + id + "' was deleted", HttpStatus.OK);

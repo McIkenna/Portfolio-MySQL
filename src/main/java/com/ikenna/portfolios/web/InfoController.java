@@ -4,6 +4,7 @@ import com.ikenna.portfolios.infos.Info;
 import com.ikenna.portfolios.services.InfoService;
 import com.ikenna.portfolios.services.MapErrorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/info")
+@SpringBootApplication
+@RequestMapping("")
 @CrossOrigin
 public class InfoController {
     @Autowired
@@ -21,7 +23,7 @@ public class InfoController {
     @Autowired
     private MapErrorService mapErrorService;
 
-    @PostMapping("")
+    @PostMapping("/admin/info")
     public ResponseEntity<?> createNewInfo(@Valid @RequestBody Info info, BindingResult result){
 
        ResponseEntity<?> errorMap = mapErrorService.MapErrorService(result);
@@ -32,7 +34,7 @@ public class InfoController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/info/{id}")
     public ResponseEntity<?> getInfoPhoneNo(@PathVariable long id){
 
         Info info = infoService.findInfoById(id);
@@ -40,12 +42,12 @@ public class InfoController {
     }
 
 
-    @GetMapping("/all")
+    @GetMapping("/api/info/all")
     public Iterable<Info> getAllInfos(){
         return infoService.findAllInfos();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/info/{id}")
     public ResponseEntity<?> deleteInfo(@PathVariable long id){
         infoService.deleteInfoById(id);
 

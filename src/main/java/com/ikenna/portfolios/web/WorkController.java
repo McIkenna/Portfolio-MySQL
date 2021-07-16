@@ -5,6 +5,7 @@ import com.ikenna.portfolios.infos.Work;
 import com.ikenna.portfolios.services.MapErrorService;
 import com.ikenna.portfolios.services.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/work")
+@SpringBootApplication
+@RequestMapping("")
 @CrossOrigin
 public class WorkController {
 
@@ -22,7 +24,7 @@ public class WorkController {
     @Autowired
     private MapErrorService mapErrorService;
 
- @PostMapping("")
+ @PostMapping("/admin/work")
     public Response addWorkExperience(@RequestParam MultipartFile file, Work work){
 
      Work workFile = workService.saveOrUpdateWork(file, work);
@@ -44,19 +46,19 @@ public class WorkController {
      return response;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/work/{id}")
     public ResponseEntity<?> getWorkByIdentifier(@PathVariable long id){
 
      Work work = workService.findWorkById(id);
      return new ResponseEntity<Work>(work, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/api/work/all")
     public Iterable<Work> getAllWorks(){
      return workService.findAllWork();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/work/{id}")
     public ResponseEntity<?> deleteWork(@PathVariable long id){
      workService.DeleteWorkById(id);
         return new ResponseEntity<String>("Work with company name '" + id + "' was deleted", HttpStatus.OK);
